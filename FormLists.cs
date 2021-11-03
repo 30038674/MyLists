@@ -29,6 +29,7 @@ namespace MyLists
                 ColourList.Add(textBoxInput.Text);
                 DisplayList();
                 textBoxInput.Clear();
+                // focus
             }
             else
             {
@@ -138,7 +139,6 @@ namespace MyLists
         {
             DisplayList();
         }
-
         private void TextBoxInput_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             textBoxInput.Clear();
