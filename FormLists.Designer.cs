@@ -39,6 +39,8 @@ namespace MyLists
             this.buttonDelete = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.buttonEdit = new System.Windows.Forms.Button();
+            this.buttonSaveText = new System.Windows.Forms.Button();
+            this.buttonOpenText = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBoxDisplay
@@ -81,21 +83,21 @@ namespace MyLists
             // 
             // buttonOpen
             // 
-            this.buttonOpen.Location = new System.Drawing.Point(156, 198);
+            this.buttonOpen.Location = new System.Drawing.Point(264, 40);
             this.buttonOpen.Name = "buttonOpen";
             this.buttonOpen.Size = new System.Drawing.Size(93, 23);
             this.buttonOpen.TabIndex = 4;
-            this.buttonOpen.Text = "Open";
+            this.buttonOpen.Text = "Open Binary";
             this.buttonOpen.UseVisualStyleBackColor = true;
             this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(156, 228);
+            this.buttonSave.Location = new System.Drawing.Point(264, 70);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(93, 23);
             this.buttonSave.TabIndex = 5;
-            this.buttonSave.Text = "Save";
+            this.buttonSave.Text = "Save Binary";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
@@ -119,11 +121,33 @@ namespace MyLists
             this.buttonEdit.UseVisualStyleBackColor = true;
             this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
+            // buttonSaveText
+            // 
+            this.buttonSaveText.Location = new System.Drawing.Point(264, 171);
+            this.buttonSaveText.Name = "buttonSaveText";
+            this.buttonSaveText.Size = new System.Drawing.Size(90, 23);
+            this.buttonSaveText.TabIndex = 8;
+            this.buttonSaveText.Text = "Save Text";
+            this.buttonSaveText.UseVisualStyleBackColor = true;
+            this.buttonSaveText.Click += new System.EventHandler(this.buttonSaveText_Click);
+            // 
+            // buttonOpenText
+            // 
+            this.buttonOpenText.Location = new System.Drawing.Point(264, 142);
+            this.buttonOpenText.Name = "buttonOpenText";
+            this.buttonOpenText.Size = new System.Drawing.Size(90, 23);
+            this.buttonOpenText.TabIndex = 9;
+            this.buttonOpenText.Text = "Open Text";
+            this.buttonOpenText.UseVisualStyleBackColor = true;
+            this.buttonOpenText.Click += new System.EventHandler(this.buttonOpenText_Click);
+            // 
             // FormLists
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(272, 273);
+            this.ClientSize = new System.Drawing.Size(366, 273);
+            this.Controls.Add(this.buttonOpenText);
+            this.Controls.Add(this.buttonSaveText);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonSave);
@@ -151,6 +175,8 @@ namespace MyLists
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button buttonEdit;
+        private System.Windows.Forms.Button buttonSaveText;
+        private System.Windows.Forms.Button buttonOpenText;
     }
 }
 

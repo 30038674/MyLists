@@ -20,6 +20,7 @@ namespace MyLists
             InitializeComponent();
         }
         List<string> ColourList = new List<string>() {"Yellow", "Red", "Green", "Blue", "Orange", "Amber", "Canary" };
+        string currentFileName = "";
 
         #region AddEditDel
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -57,7 +58,7 @@ namespace MyLists
         }
         #endregion AddEditDel
 
-        #region FileIO
+        #region BinaryFileIO
         private void buttonOpen_Click(object sender, EventArgs e)
         {
             string fileName = "Rainbow.bin";
@@ -114,7 +115,67 @@ namespace MyLists
                 MessageBox.Show("cannot save file");
             }
         }
-        #endregion FileIO
+        #endregion BinaryFileIO
+
+        #region TextFileIO
+        private void buttonOpenText_Click(object sender, EventArgs e)
+        {
+            string fileName = "demo_01.txt";
+            OpenFileDialog OpenText = new OpenFileDialog();
+            DialogResult sr = OpenText.ShowDialog();
+            if (sr == DialogResult.OK)
+            {
+                fileName = OpenText.FileName;
+            }
+            currentFileName = fileName;
+            try
+            {
+                ColourList.Clear();
+                using (StreamReader reader = new StreamReader(File.OpenRead(fileName)))
+                {
+                    while (!reader.EndOfStream)
+                    {                     
+                        ColourList.Add(reader.ReadLine());
+                    }
+                }
+                DisplayList();
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("file not openned");
+            }
+        }
+        private void buttonSaveText_Click(object sender, EventArgs e)
+        {
+            string fileName = "demo_01.txt";
+            SaveFileDialog SaveText = new SaveFileDialog();
+            DialogResult sr = SaveText.ShowDialog();
+            if (sr == DialogResult.OK)
+            {
+                fileName = SaveText.FileName;
+            }
+            if (sr == DialogResult.Cancel)
+            {
+                SaveText.FileName = fileName;
+            }
+            // Validate file name and increment
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(fileName, false))
+                {
+                    foreach(var colour in ColourList)
+                    {
+                        writer.WriteLine(colour);
+                    }
+                }
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("File NOT saved");
+            }
+        }
+
+        #endregion TextFileIO
 
         #region Utility
         private void DisplayList()
@@ -149,5 +210,7 @@ namespace MyLists
             textBoxInput.Text = ColourList.ElementAt(listBoxDisplay.SelectedIndex);
         }
         #endregion Utility
+
+
     }
 }
