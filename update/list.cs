@@ -52,65 +52,6 @@ namespace MyLists
         }
         #endregion AddEditDel
 
-        #region BinaryFileIO
-        private void buttonOpen_Click(object sender, EventArgs e)
-        {
-            string fileName = "Rainbow.bin";
-            OpenFileDialog OpenBinary = new OpenFileDialog();
-            DialogResult sr = OpenBinary.ShowDialog();
-            if (sr == DialogResult.OK)
-            {
-                fileName = OpenBinary.FileName;
-            }
-            try
-            {
-                ColourList.Clear();
-                using (Stream stream = File.Open(fileName, FileMode.Open))
-                {
-                    BinaryFormatter binaryFormatter = new BinaryFormatter();
-                    while (stream.Position < stream.Length)
-                    {
-                        ColourList.Add((string)binaryFormatter.Deserialize(stream));
-                    }
-                }
-                DisplayList();
-            }
-            catch (IOException)
-            {
-                MessageBox.Show("cannot open file");
-            }
-        }
-        private void buttonSave_Click(object sender, EventArgs e)
-        {
-            string fileName = "Rainbow.bin";
-            SaveFileDialog saveBinary = new SaveFileDialog();
-            DialogResult sr = saveBinary.ShowDialog();
-            if (sr == DialogResult.Cancel)
-            {
-                saveBinary.FileName = fileName;
-            }
-            if (sr == DialogResult.OK)
-            {
-                fileName = saveBinary.FileName;
-            }
-            try
-            {
-                using (Stream stream = File.Open(fileName, FileMode.Create))
-                {
-                    BinaryFormatter binFormatter = new BinaryFormatter();
-                    foreach (var item in ColourList)
-                    {
-                        binFormatter.Serialize(stream, item);
-                    }
-                }
-            }
-            catch (IOException)
-            {
-                MessageBox.Show("cannot save file");
-            }
-        }
-        #endregion BinaryFileIO
-
         #region TextFileIO
         private void buttonOpenText_Click(object sender, EventArgs e)
         {
@@ -180,9 +121,6 @@ namespace MyLists
         {
             try
             {
-                //currentFileName = Path.GetFileNameWithoutExtension(currentFileName);
-                //string twoDigits = currentFileName.Remove(0, 5);
-                //int num = int.Parse(twoDigits);
                 int num = int.Parse(Path.GetFileNameWithoutExtension(currentFileName).Remove(0, 5));
                 num++;
                 string newValue;
